@@ -9,21 +9,21 @@ app.use(express.static('server/public'));
 // Global variable that will contain all of the
 // calculation objects:
 let calculations = [{
-  numOne: 2,
+  num1: 2,
   operator: "+",
-  numTwo: 4,
+  num2: 4,
   result: 6
 },
 {
-  numOne: 6,
+  num1: 6,
   operator: "*",
-  numTwo: 6,
+  num2: 6,
   result: 36
 },
 {
-numOne: 4,
+num1: 4,
 operator: "-",
-numTwo: 1,
+num2: 1,
 result: 3
 }
 ];
@@ -45,6 +45,9 @@ app.post('/calculations', (req, res) => {
 
   let result = calcResult(newHistory)
   console.log("Result is... ", result)
+
+  newHistory.result = result
+  console.log("New history:", result);
 
   calculations.push(newHistory)
 
