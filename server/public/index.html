@@ -9,15 +9,15 @@
   <body>
     <h1>Server-Side Calculator</h1>
 
-    <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+    <form data-testid="calculator" onsubmit="postCalculations(event)">
+      <input data-testid="numOne" placeholder="First Number" id="numOne">
+      <button onClick="selectOperator('+')">+</button>
+      <button onClick="selectOperator('-')">-</button>
+      <button onClick="selectOperator('*')">*</button>
+      <button onClick="selectOperator('/')">/</button>
+      <input data-testid="numTwo" placeholder="Second Number" id="numTwo">
+      <button type="submit">=</button>
+      <button onClick="clearForm(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
