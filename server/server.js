@@ -39,21 +39,29 @@ app.get('/calculations', (req, res) => {
 
 // POST /calculations
 app.post('/calculations', (req, res) => {
-  let newHistory = req.body
-  newHistory.num1 = Number(newHistory.num1)
-  newHistory.num2 = Number(newHistory.num2)
+  // Extract data from request body and convert to numbers
+  let newHistory = {
+    num1: Number(req.body.num1),
+    num2: Number(req.body.num2),
+    operator: req.body.operator
+  };
 
-  let result = calcResult(newHistory)
-  console.log("Result is... ", result)
+  // Calculate result
+  let result = calcResult(newHistory);
+  console.log("Result is... ", result);
 
-  newHistory.result = result
-  console.log("New history:", result);
+  // Add result to history
+  newHistory.result = result;
 
-  calculations.push(newHistory)
+  // Add new history to calculations array
+  calculations.push(newHistory);
+  console.log("New history:", newHistory);
 
+  // Send response
   console.log("POST /calculations working:", newHistory);
-  res.sendStatus(200)
-})
+  res.sendStatus(200);
+});
+
 
 
 
